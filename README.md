@@ -2,7 +2,7 @@
 
 Recent PHP updates have secured variable handling.
 
-This results in [prostats.php](../blob/master/source/inc/plugins/prostats.php):
+This results in [prostats.php](source/inc/plugins/prostats.php):
 
 > **Illegal string offset 'xxxxxxxxxxx' on line 1247, 1253, 1258, 1263, 1268**
 
