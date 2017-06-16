@@ -1233,8 +1233,17 @@ function ps_GetNewestPosts($NumOfRows, $feed=false)
 		$newestposts_cols_name = "";
 		$newestposts_cols = "";
 		$colspan = 0;
-		$active_cells = "";
-
+        
+        //To stop an Illegal String Offset we need declare an array
+        //Because later we are affecting values as an array
+        
+        //Begin Changes -- 16/06/2017 -- Author: Médéric Burlet
+        
+		//$active_cells = "";
+        $active_cells = array("foo" => "bar","bar" => "foo");
+        
+		//End Changes -- 16/06/2017
+        
 		$latest_posts_cells_arr = escaped_explode(",", htmlspecialchars_uni($mybb->settings['ps_latest_posts_cells']),20);
 		
 		foreach($latest_posts_cells_arr as $latest_posts_cell)
@@ -1244,27 +1253,27 @@ function ps_GetNewestPosts($NumOfRows, $feed=false)
 			switch($latest_posts_cell)
 			{
 				case "Latest_posts" : 
-					$active_cells['Latest_posts']=1;
+					$active_cells = 1;
 					eval("\$newestposts_cols_name .= \"".$templates->get("prostats_newestposts_head_latest_posts")."\";");
 					$cell_order[$colspan]='Latest_posts';
 					break;
 				case "Date" :
-					$active_cells['Date']=1;
+					$active_cells["Date"]=1;
 					eval("\$newestposts_cols_name .= \"".$templates->get("prostats_newestposts_head_date")."\";");
 					$cell_order[$colspan]='Date';
 					break;
 				case "Starter" :
-					$active_cells['Starter']=1;
+					$active_cells["Starter"]=1;
 					eval("\$newestposts_cols_name .= \"".$templates->get("prostats_newestposts_head_starter")."\";");
 					$cell_order[$colspan]='Starter';
 					break;
 				case "Last_sender" :
-					$active_cells['Last_sender']=1;
+					$active_cells["Last_sender"]=1;
 					eval("\$newestposts_cols_name .= \"".$templates->get("prostats_newestposts_head_last_sender")."\";");
 					$cell_order[$colspan]='Last_sender';
 					break;
 				case "Forum" :
-					$active_cells['Forum']=1;
+					$active_cells["Forum"]=1;
 					eval("\$newestposts_cols_name .= \"".$templates->get("prostats_newestposts_head_forum")."\";");
 					$cell_order[$colspan]='Forum';
 					break;
